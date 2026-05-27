@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DOGE-1 Launch Tracker</title>
+  <meta name="description" content="A playful Dogecoin price tracker with Doge rocket-part animations." />
+  <link rel="preconnect" href="https://api.coingecko.com" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <p class="eyebrow">Doge Rocket Assembly Mission</p>
+      <h1>DOGE-1 Launch Tracker</h1>
+      <p class="subtitle">Live Dogecoin price tracking with animated rocket-part milestones.</p>
+    </section>
+
+    <section class="dashboard" aria-label="Dogecoin dashboard">
+      <article class="mini-card" aria-live="polite">
+        <span class="card-label">Current DOGE Price</span>
+        <strong id="priceDisplay">Loading…</strong>
+        <small id="priceTimestamp">Fetching live market data</small>
+      </article>
+      <article class="mini-card" aria-live="polite">
+        <span class="card-label">DOGE-1 Tracker</span>
+        <strong id="missionDisplay">Awaiting signal</strong>
+        <small id="missionSubtext">Launch goal: $1.00 DOGE</small>
+      </article>
+    </section>
+
+    <section class="progress-wrap" aria-label="Progress from current DOGE price to one dollar">
+      <div class="progress-header">
+        <span>DOGE to $1 Progress</span>
+        <strong id="progressPercent">0%</strong>
+      </div>
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Dogecoin progress to one dollar">
+        <div id="progressFill" class="progress-fill"></div>
+        <div id="progressDoge" class="progress-doge" aria-hidden="true">🐕</div>
+      </div>
+      <div class="progress-scale"><span id="currentScale">$0.0000</span><span>$1.00</span></div>
+    </section>
+
+    <section class="scene-card">
+      <div class="scene-meta">
+        <span id="milestoneBadge" class="badge">Mission loading</span>
+        <h2 id="sceneTitle">Waiting for DOGE price…</h2>
+        <p id="sceneDescription">Doge is sniffing around for rocket parts.</p>
+      </div>
+
+      <div id="scene" class="scene scene-waiting" aria-live="polite" aria-label="Animated Doge milestone scene">
+        <div class="sky">
+          <span class="cloud cloud-a"></span>
+          <span class="cloud cloud-b"></span>
+          <span class="cloud cloud-c"></span>
+        </div>
+
+        <div class="prop prop-nose-cone"><span></span></div>
+        <div class="prop prop-tank"><span></span></div>
+        <div class="prop prop-bone"></div>
+        <div class="prop prop-frog"><span></span></div>
+        <div class="prop prop-engines"><span></span><span></span></div>
+        <div class="prop prop-fuel"><span></span></div>
+        <div class="prop prop-chihuahua"><span></span></div>
+        <div class="prop prop-voucher">pee rights</div>
+        <div class="prop prop-rocket-body"><span></span></div>
+        <div class="prop prop-treats"><span></span></div>
+        <div class="prop prop-guidance"><span></span></div>
+        <div class="prop prop-house"><span></span></div>
+        <div class="prop prop-stage"><span></span></div>
+        <div class="prop prop-spacesuit"><span></span></div>
+        <div class="prop prop-medal">DOGE-1</div>
+
+        <div class="table table-auction"></div>
+        <div class="market-sign">garage sale</div>
+        <div class="museum-sign">frog museum</div>
+        <div class="casino-sign">all in!</div>
+
+        <div id="doge" class="doge" aria-hidden="true">
+          <div class="tail"></div>
+          <div class="body"></div>
+          <div class="head">
+            <div class="ear ear-l"></div>
+            <div class="ear ear-r"></div>
+            <div class="face-mask"></div>
+            <div class="eye eye-l"></div>
+            <div class="eye eye-r"></div>
+            <div class="brow brow-l"></div>
+            <div class="brow brow-r"></div>
+            <div class="snout"></div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+            <div class="cheek cheek-l"></div>
+            <div class="cheek cheek-r"></div>
+          </div>
+          <div class="leg leg-a"></div>
+          <div class="leg leg-b"></div>
+        </div>
+        <div class="ground"></div>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Testing controls">
+      <h2>Preview milestones</h2>
+      <p>Use these buttons to test every animation without waiting for the live price.</p>
+      <div class="button-grid" id="previewButtons"></div>
+      <button class="ghost-button" id="liveModeButton" type="button">Return to live price mode</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wag-count" aria-live="polite">
+      <span>Wag Count (Visitor Count):</span>
+      <strong id="wagCount">Loading…</strong>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
