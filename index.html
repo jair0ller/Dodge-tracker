@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOGE Moon Mission — Cinematic Landing Edition</title>
+  <link rel="preconnect" href="https://api.coingecko.com" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+
+  <main class="app">
+    <section class="hero card">
+      <div class="hero-copy">
+        <p class="eyebrow">Live Dogecoin mission tracker</p>
+        <h1>DOGE Moon Mission</h1>
+        <p class="subhead">
+          A story-driven Dogecoin dashboard where Doge scavenges junkyard piles, trades bones and treats for rocket parts,
+          gets an astronaut suit from a cartoon Elon Musk at SPACE X, and lands on the moon in a more cinematic final sequence at $1.00.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge">Live DOGE/USD</span>
+          <span class="badge">Animated milestones</span>
+          <span class="badge">Mission progress</span>
+          <span class="badge">Cinematic moon landing</span>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="status-pill">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Connecting…</span>
+        </div>
+
+        <div class="mission-preview">
+          <div class="preview-coin" id="previewCoin">Ð</div>
+          <div>
+            <div class="mini-label">Current mission state</div>
+            <strong id="currentStateTitle">Searching the junkyard</strong>
+            <p id="currentStateCopy">Doge is looking for rocket parts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="top-grid">
+      <article class="panel card">
+        <div class="panel-head">
+          <div>
+            <span class="label">Dogecoin price</span>
+            <h2 id="price">$—</h2>
+          </div>
+          <div class="coin-badge" id="coinBadge">Ð</div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric-box">
+            <span class="label">Since last check</span>
+            <strong id="instantChange">—</strong>
+          </div>
+          <div class="metric-box">
+            <span class="label">24h change</span>
+            <strong id="dayChange">—</strong>
+          </div>
+        </div>
+
+        <div class="meta-grid">
+          <span id="lastUpdated">Last updated: —</span>
+          <span>Auto refresh: 20s</span>
+          <span id="nextTarget">Next target: $0.20 — Nose cone / fairing</span>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-topline">
+            <span>Mission progress</span>
+            <strong id="progressLabel">12%</strong>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-marker marker-20"></div>
+            <div class="progress-marker marker-30"></div>
+            <div class="progress-marker marker-40"></div>
+            <div class="progress-marker marker-50"></div>
+            <div class="progress-marker marker-60"></div>
+            <div class="progress-marker marker-70"></div>
+            <div class="progress-marker marker-80"></div>
+            <div class="progress-marker marker-90"></div>
+            <div class="progress-marker marker-100"></div>
+          </div>
+          <div class="progress-notes">
+            <span>$0.00</span>
+            <span>$1.00</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="refreshBtn" type="button">Refresh now</button>
+          <button id="liveModeBtn" type="button" class="ghost">Live mode</button>
+          <button id="soundToggleBtn" type="button" class="ghost">Sound: On</button>
+        </div>
+
+        <div class="demo-section">
+          <div class="demo-head">
+            <strong>Jump to price milestones</strong>
+            <span>Quick preview buttons</span>
+          </div>
+          <div class="demo-points" id="demoPoints"></div>
+        </div>
+      </article>
+
+      <article class="scene-panel card">
+        <div class="scene stage-search" id="scene" data-suit="false" data-landing-step="approach">
+          <div class="scene-gradient"></div>
+          <div class="stars"></div>
+          <div class="planet"></div>
+
+          <div class="scene-layer junkyard-scene">
+            <div class="junk-pile pile-a"></div>
+            <div class="junk-pile pile-b"></div>
+            <div class="junk-pile pile-c"></div>
+            <div class="junk-pile pile-d"></div>
+
+            <div class="trash-detail detail-a">🔩</div>
+            <div class="trash-detail detail-b">⚙️</div>
+            <div class="trash-detail detail-c">🧰</div>
+            <div class="trash-detail detail-d">🔧</div>
+
+            <div class="floating-item-card">
+              <span class="floating-label">Latest discovery</span>
+              <strong id="foundItemLabel">Searching junkyard piles…</strong>
+              <p id="foundItemCopy">Below $0.15, Doge is scouting scrap piles and bargaining for rocket parts.</p>
+            </div>
+
+            <div class="trade-post">
+              <div class="trade-sign">Trade Post</div>
+              <div class="vendor-head"></div>
+              <div class="vendor-body"></div>
+              <div class="trade-goods">
+                <span>🦴</span>
+                <span>🍖</span>
+                <span>⚙️</span>
+              </div>
+            </div>
+
+            <div class="doge-character" id="dogeCharacter">
+              <div class="thought-bubble" id="thoughtBubble">? ⚙️ 🚀</div>
+              <div class="dog-tail"></div>
+              <div class="dog-body"></div>
+              <div class="dog-leg leg-a"></div>
+              <div class="dog-leg leg-b"></div>
+              <div class="dog-leg leg-c"></div>
+              <div class="dog-leg leg-d"></div>
+
+              <div class="dog-head">
+                <div class="dog-ear ear-left"></div>
+                <div class="dog-ear ear-right"></div>
+                <div class="dog-face">
+                  <div class="dog-eye eye-left"></div>
+                  <div class="dog-eye eye-right"></div>
+                  <div class="dog-snout">
+                    <div class="dog-nose"></div>
+                  </div>
+                </div>
+                <div class="magnifier"></div>
+              </div>
+
+              <div class="dog-suit" id="dogSuit">
+                <span>🧑‍🚀</span>
+              </div>
+            </div>
+
+            <div class="trade-animation">
+              <span class="trade-item trade-bone">🦴</span>
+              <span class="trade-item trade-treat">🍖</span>
+            </div>
+
+            <div class="found-part" id="foundPart">
+              <div class="part-token" id="partToken">⚙️</div>
+            </div>
+
+            <div class="rocket-bay">
+              <div class="rocket-bay-head">
+                <strong>Rocket Assembly Bay</strong>
+                <span id="assemblyStatus">Build in progress</span>
+              </div>
+
+              <div class="rocket-scaffold">
+                <div class="rocket-body-shell part-shell" data-part="body"></div>
+                <div class="rocket-nose part-nose" data-part="nose"></div>
+                <div class="rocket-tank tank-a" data-part="tanks"></div>
+                <div class="rocket-tank tank-b" data-part="tanks"></div>
+                <div class="rocket-lines part-lines" data-part="fuel"></div>
+                <div class="rocket-engine engine-a" data-part="engines"></div>
+                <div class="rocket-engine engine-b" data-part="engines"></div>
+                <div class="rocket-engine engine-c" data-part="engines"></div>
+                <div class="rocket-guidance part-guidance" data-part="guidance"></div>
+                <div class="rocket-separator part-separation" data-part="separation"></div>
+                <div class="rocket-window"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="scene-layer spacex-scene">
+            <div class="hangar-sign">SPACE X</div>
+            <div class="hangar-floor"></div>
+
+            <div class="cartoon-elon">
+              <div class="elon-head"></div>
+              <div class="elon-hair"></div>
+              <div class="elon-body"></div>
+              <div class="elon-arm arm-left"></div>
+              <div class="elon-arm arm-right"></div>
+              <div class="elon-speech">“Suit up, Doge!”</div>
+            </div>
+
+            <div class="astronaut-suit">
+              <span>🧑‍🚀</span>
+            </div>
+
+            <div class="doge-suited">
+              <div class="suited-helmet"></div>
+              <div class="suited-body"></div>
+              <div class="suited-visor"></div>
+              <div class="suited-legs"></div>
+            </div>
+
+            <div class="spacex-copy">
+              <strong>Astronaut suit found at $0.90</strong>
+              <p>Cartoon Elon Musk presents Doge with the astronaut suit at SPACE X.</p>
+            </div>
+          </div>
+
+          <div class="scene-layer moon-scene">
+            <div class="moon-stars"></div>
+            <div class="earth"></div>
+            <div class="moon-glow"></div>
+            <div class="descent-trail"></div>
+
+            <div class="moon-rocket" id="moonRocket">
+              <div class="moon-flame"></div>
+              <div class="moon-rocket-body"></div>
+              <div class="moon-rocket-nose"></div>
+              <div class="moon-rocket-fin fin-left"></div>
+              <div class="moon-rocket-fin fin-right"></div>
+              <div class="moon-window"></div>
+            </div>
+
+            <div class="touchdown-ring"></div>
+
+            <div class="moon-ground"></div>
+            <div class="moon-ridge ridge-a"></div>
+            <div class="moon-ridge ridge-b"></div>
+            <div class="moon-crater crater-a"></div>
+            <div class="moon-crater crater-b"></div>
+            <div class="moon-crater crater-c"></div>
+
+            <div class="landing-dust dust-a"></div>
+            <div class="landing-dust dust-b"></div>
+            <div class="landing-dust dust-c"></div>
+
+            <div class="moon-doge">
+              <div class="moon-helmet"></div>
+              <div class="moon-face"></div>
+              <div class="moon-visor"></div>
+            </div>
+
+            <div class="moon-flag">
+              <div class="flag-pole"></div>
+              <div class="flag-cloth">DOGE TO THE MOON</div>
+            </div>
+
+            <div class="moon-spotlight"></div>
+
+            <div class="moon-copy">
+              <strong>Cinematic touchdown at $1.00</strong>
+              <p>Doge now gets a full multi-step finale: approach, hover, touchdown, and a final flag-plant moment on the moon.</p>
+            </div>
+
+            <div class="landing-sequence-card">
+              <span class="floating-label">Landing sequence</span>
+              <strong id="landingStepTitle">Final approach</strong>
+              <p id="landingStepCopy">The rocket aligns with the landing site and begins its descent corridor.</p>
+
+              <div class="landing-steps">
+                <span class="landing-step step-approach">Approach</span>
+                <span class="landing-step step-hover">Hover</span>
+                <span class="landing-step step-touchdown">Touchdown</span>
+                <span class="landing-step step-flag">Flag plant</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="scene-copy">
+          <h3 id="sceneTitle">Searching the junkyard</h3>
+          <p id="sceneDescription">
+            Below $0.15, Doge searches junkyard piles and trades bones and treats for clues about rocket parts.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section class="bottom-grid">
+      <article class="card panel">
+        <div class="section-head">
+          <div>
+            <h3>Mission milestones</h3>
+            <p>Each price threshold unlocks the next chapter of the story.</p>
+          </div>
+        </div>
+        <ol id="milestonesList" class="milestones-list"></ol>
+      </article>
+
+      <article class="card panel">
+        <div class="section-head">
+          <div>
+            <h3>Mission log</h3>
+            <p>Recent events and unlock notifications.</p>
+          </div>
+          <button id="clearLogBtn" type="button" class="ghost small">Clear log</button>
+        </div>
+        <ol id="missionLog" class="log-list"></ol>
+      </article>
+    </section>
+  </main>
+
+  <div class="toast" id="toast">
+    <strong id="toastTitle">Milestone unlocked</strong>
+    <p id="toastText">Rocket part discovered.</p>
+  </div>
+
+  <template id="milestoneItemTemplate">
+    <li class="milestone-item">
+      <div class="milestone-price"></div>
+      <div class="milestone-copy">
+        <strong class="milestone-title"></strong>
+        <p class="milestone-desc"></p>
+      </div>
+      <span class="milestone-state"></span>
+    </li>
+  </template>
+
+  <template id="logItemTemplate">
+    <li class="log-item">
+      <span class="log-time"></span>
+      <div class="log-copy">
+        <strong class="log-title"></strong>
+        <p class="log-desc"></p>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
